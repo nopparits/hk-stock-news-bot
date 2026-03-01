@@ -1,0 +1,10 @@
+# ไฟล์ความลับ ห้ามอัปโหลดเด็ดขาด
+.env
+config.py
+*.key
+*.secret
+
+# ไฟล์ขยะจาก Python
+__pycache__/
+*.pyc
+.DS_Store
