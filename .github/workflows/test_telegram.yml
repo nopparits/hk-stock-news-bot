@@ -1,0 +1,20 @@
+name: 🔴 TEST TELEGRAM ONLY
+
+on:
+  workflow_dispatch: # กดรันมือเองเท่านั้น
+
+jobs:
+  test-tg:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send Direct Message via CURL
+        run: |
+          echo "🚀 กำลังทดสอบส่งข้อความ..."
+          
+          # ใช้ curl ส่งแบบง่ายที่สุด เพื่อตัดปัญหาเรื่อง Python library
+          curl -X POST https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage \
+            -d chat_id=${{ secrets.TELEGRAM_CHAT_ID }} \
+            -d text="✅ <b>TEST SUCCESSFUL!</b>\nถ้าเห็นข้อความนี้ แปลว่า Token และ Chat ID ถูกต้อง" \
+            -d parse_mode="HTML"
+          
+          echo "✨ ส่งคำสั่งเสร็จสิ้น (เช็ค Telegram ได้เลย)"
